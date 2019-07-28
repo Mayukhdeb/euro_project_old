@@ -1,8 +1,8 @@
 # create_training_data.py
 
-## center of screen 800 x 600
+## keep game on the center of screen @ 800 x 600
 
-##cockpit view truck
+##cockpit view in truck
 
 
 import numpy as np
@@ -25,7 +25,7 @@ def keys_to_output(keys):
 
     '''
 
-    Convert keys to a ...multi-hot... array
+    Convert keys to a one_hot array
 
 
 
@@ -39,15 +39,15 @@ def keys_to_output(keys):
 
     if 'A' in keys:
 
-        output[0] = 1
+        output[0] = 1         # [ 1,0,0]
 
     elif 'D' in keys:
 
-        output[2] = 1
+        output[2] = 1        # [0,0,1]
 
     else:
 
-        output[1] = 1
+        output[1] = 1          # [0,1,0]
 
     return output
 
@@ -69,7 +69,7 @@ else:
 
     print('File does not exist, starting fresh!')
 
-    training_data = []
+    training_data = []                        # training data saved as a matrix (.npy) file
 
 
 
@@ -79,7 +79,7 @@ def main():
 
 
 
-    for i in list(range(30))[::-1]:
+    for i in list(range(30))[::-1]:      #countdown for clearing up stuff from where python will take snapshots
 
         print(i+1)
 
@@ -101,11 +101,11 @@ def main():
             # 800x600 windowed mode
             
 
-            screen = grab_screen(region=(560,240,1360,840))
+            screen = grab_screen(region=(560,240,1360,840))    # co - ordinates 
 
             last_time = time.time()
 
-            screen = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
+            screen = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)   # convert to grayscale
 
             screen = cv2.resize(screen, (320,240))
 
@@ -115,7 +115,7 @@ def main():
 
             output = keys_to_output(keys)
 
-            training_data.append([screen,output])
+            training_data.append([screen,output])      #saves an array paired with the key pressed as another array
 
             
 
@@ -131,7 +131,7 @@ def main():
 
         keys = key_check()
 
-        if 'T' in keys:
+        if 'T' in keys:                        # press T to pause 
 
             if paused:
 
