@@ -2,6 +2,9 @@
 
 
 
+# shuffling/ balancing the data to have equal number of lefts and rights and forwards before training
+
+
 import numpy as np
 
 import pandas as pd
