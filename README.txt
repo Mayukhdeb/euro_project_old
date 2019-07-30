@@ -1,6 +1,3 @@
-# euro_project_old
-
-
 README / explanation ---------------------
 
 Python 3.5
@@ -196,7 +193,6 @@ improvements I will work on
 -- vehicle detection and avoiding 
 
 -- larger and a higher resolution training dataset (maybe use the original 800*600 matrix)
-   need a more efficient input method for that 
 
 -- use a better neural network model, something better than alexnet maybe 
 	 
