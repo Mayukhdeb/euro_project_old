@@ -38,9 +38,9 @@ create_training_data.py
 
 	[0,0,1] for D (right)
 
->> the large 320*240 array is then paired up with the [ , , ] array  (see attached image 1 )
+>> the large 320*240 array is then paired up with the [ , , ] array  
 
->> the pairs are then appended to one final array (training_data.npy) and saved after every 1000 frames are taken. 
+>> the pairs are then appended to one final array (training_data.npy) and saved after every 1000 frames of input.
 
 
 
@@ -53,7 +53,7 @@ balance_data.py
 >> this makes sure there are no biases in the final model due to the presence of too many 
    straights as compared to lefts or rights
 
->> it also shuffles the data
+>> It also shuffles the data, but the integrity of the pairs remain
 
 
 -----------------------------
@@ -61,20 +61,14 @@ balance_data.py
 train_model.py
 
 
->> I really dont know much about how it works from it's core, line by line
 
-		but I know how to tweak a few of the parameters
-
->> it's based on "alexnet" made by a russian guy back in 2012
-
->> alexnet is a flexible CNN which I used for my "image sorting model"
 
 >>  EPOCHS = the number of cycles/ number of times the neural network will go through the complete 
     training data to train itself. 
 
 >> LR = learning rate
 
->> there is also a "validation set" of 200 frames on which the neural network tests itself after every epoch
+>> there is also a "validation set" of 200 frames on which the NN tests itself after every epoch
 
 
 
@@ -184,17 +178,25 @@ Some of the errors/mistakes which I learned from
 -----------------------------------------------------------------------------------------------------------------------------
 
 
-improvements I will work on 
+Improvements I will work on 
 
 -- RGB input
 
 -- joystick input by python for smoother steering
 
--- vehicle detection and avoiding 
+-- vehicle detection using opecCV and some avoiding mechanism while trying to stay on the road.
 
 -- larger and a higher resolution training dataset (maybe use the original 800*600 matrix)
 
--- use a better neural network model, something better than alexnet maybe 
+-- use a better neural network model, something better than alexnet maybe (using PyTorch maybe)
+
+-- using a time dependent input model instead of the one_hot input model I'm currently using. 
+
+instead of taking just [ 1, 0, 0] when 'A' is pressed, I want to take [ (phi*time_pressed), 0 , 0 ]
+
+where phi = some sensitivity parameter that I'll set
+
+time_pressed = the amount of time the key was pressed for.
 	 
 
 
